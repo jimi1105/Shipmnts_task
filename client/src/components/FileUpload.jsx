@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './FileUpload.css'; // Import the CSS for FileUpload component
+import { toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
+import './FileUpload.css'; 
 
 const FileUpload = () => {
     const [file, setFile] = useState(null);
     const [parsedData, setParsedData] = useState([]);
-    const [message, setMessage] = useState('');
 
     const onFileChange = (e) => {
         setFile(e.target.files[0]);
     };
 
     const onUpload = async () => {
+        if (!file) {
+            toast.error('Please select a file to upload.');
+            return;
+        }
+
         const formData = new FormData();
         formData.append('file', file);
 
@@ -22,31 +28,35 @@ const FileUpload = () => {
                 },
             });
             setParsedData(response.data.data);
-            setMessage('File uploaded and parsed successfully!');
+            toast.success('File uploaded and parsed successfully!');
         } catch (error) {
-            setMessage('Error uploading file.');
+            toast.error('Error uploading file.');
             console.error(error);
         }
     };
 
     const onSaveData = async () => {
+        if (parsedData.length === 0) {
+            toast.warning('No data to save.');
+            return;
+        }
+
         try {
-            const response = await axios.post('http://localhost:3000/api/save', { data: parsedData });
-            setMessage('Data saved successfully!');
+            await axios.post('http://localhost:3000/api/save', { data: parsedData });
+            toast.success('Data saved successfully!');
         } catch (error) {
+            toast.error('Error saving data.');
             console.error('Error saving data:', error);
-            setMessage('Error saving data.');
         }
     };
 
-
     return (
         <div className="file-upload-container">
-            <h2>Upload Excel File</h2>
+            <h1>File Upload and Data Management</h1>
+            <h3>Upload Excel File</h3>
             <input type="file" accept=".xlsx, .xls" onChange={onFileChange} />
             <button onClick={onUpload}>Upload</button>
             <button onClick={onSaveData} disabled={parsedData.length === 0}>Save Data</button>
-            <p>{message}</p>
 
             {parsedData.length > 0 && (
                 <div className="table-container">

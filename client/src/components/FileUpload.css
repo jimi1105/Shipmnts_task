@@ -2,6 +2,44 @@
     text-align: center;
 }
 
+.file-upload-container h1 {
+    color: #333;
+    margin-top: 0px;
+    margin-bottom: 20px; /* Space below heading */
+}
+
+.file-upload-container h3 {
+    font-size: 1.5rem; /* Adjust size as needed */
+    font-weight: 500; /* Medium */
+    color: #555;
+    margin-bottom: 15px; /* Space below heading */
+}
+
+.file-upload-container input[type="file"] {
+    margin: 10px 0;
+}
+
+.file-upload-container button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload-container button:hover {
+    background-color: #0056b3;
+}
+
+.file-upload-container button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
 .table-container {
     margin-top: 20px;
     width: 100%;

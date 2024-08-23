@@ -1,0 +1,50 @@
+/* Ensure the body takes up the full height and has no margin */
+
+* {
+  margin:  0px;
+  padding: 0px;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  background-color: #f4f4f4; /* Light background color for contrast */
+}
+
+table {
+  margin: 20px;
+  border-collapse: collapse;
+  width: 80%; /* Adjust width as needed */
+  max-width: 1200px; 
+  background-color: #fff; /* White background for the table */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better appearance */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff; /* Blue background for headers */
+  color: #fff; /* White text color */
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Light hover effect */
+}

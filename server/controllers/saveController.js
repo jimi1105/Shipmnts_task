@@ -2,15 +2,13 @@ const Company = require('../models/company')
 
 const saveData = async (req, res) => {
     try {
-        const parsedData = req.session.parsedData; // Retrieve parsed data from session
+        const { data } = req.body;
 
-        if (!parsedData || !parsedData.length) {
+        if (!data || !data.length) {
             return res.status(400).send('No data to save.');
         }
 
-        const authorsMap = new Map();
-
-        for (const row of parsedData) {
+        for (const row of data) {
             await Company.findOneAndUpdate(
                 { email: row.email }, // Find by email to ensure uniqueness
                 {
@@ -24,8 +22,6 @@ const saveData = async (req, res) => {
             );
         }
 
-        // Clear session data after saving
-        req.session.parsedData = null;
 
         return res.status(200).send('Data saved successfully.');
     } catch (error) {

@@ -28,8 +28,6 @@ const uploadFile = (req, res) => {
 
         });
 
-        // Store parsed data in session or send it back to frontend
-        req.session.parsedData = parsedData; // Assuming session middleware is used
 
         // Send parsed data back to frontend
         return res.status(200).json({ data: parsedData });

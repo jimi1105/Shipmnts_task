@@ -48,7 +48,7 @@ The server will run on http://localhost:3000.
  2. **Install Dependencies**
     
     ```bash
-   npm install
+    npm install
     
 3. **Start the Development Server**
     

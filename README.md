@@ -29,8 +29,9 @@ A web application for managing company data, including file uploads, data parsin
    npm install
 
 3. **Set Up Environment Variables**
+
   Create a .env file in the backend directory with the following content:
-   DATABASE_URL=mongodb+srv://yourUsername:yourPassword@cluster0.mongodb.net/yourDatabase?retryWrites=true&w=majority.
+   DATABASE_URL = "mongodb+srv://yourUsername:yourPassword@cluster0.mongodb.net/yourDatabase?retryWrites=true&w=majority"
 
 4. **Start the Server**
    npm start
@@ -44,7 +45,6 @@ The server will run on http://localhost:3000.
    ```bash
    cd ../client
 
-    
  2. **Install Dependencies**
     
     ```bash
